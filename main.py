@@ -24,7 +24,7 @@ def ejecutar_proceso():
     puerto = "3306"
     usuario = "pablo"
     password = "Laura.1729"
-    bd = "badintur"
+    bd = "districronos"
     
     url_conexion = f"mysql+pymysql://{usuario}:{password}@{host}:{puerto}/{bd}"
     
