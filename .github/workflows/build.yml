@@ -5,17 +5,20 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Descargar codigo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
       - name: Configurar Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
+
       - name: Instalar librerias y Compilar
         run: |
           pip install pandas sqlalchemy pymysql openpyxl pyinstaller
           pyinstaller --onefile --name "Exportador_DGI" main.py
+
       - name: Subir el EXE
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Ejecutable_Windows
           path: dist/Exportador_DGI.exe
