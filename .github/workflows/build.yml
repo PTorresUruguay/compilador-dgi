@@ -1,0 +1,20 @@
+name: Crear Ejecutable Windows
+on: [push, workflow_dispatch]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+      - name: Instalar librerias y Compilar
+        run: |
+          pip install pandas sqlalchemy pymysql openpyxl pyinstaller
+          pyinstaller --onefile main.py
+      - name: Subir EXE final
+        uses: actions/upload-artifact@v3
+        with:
+          name: programa-dgi
+          path: dist/main.exe
